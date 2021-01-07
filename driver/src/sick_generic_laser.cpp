@@ -16,7 +16,7 @@
 *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 *   See the License for the specific language governing permissions and
 *   limitations under the License.
-* 
+*
 * All rights reserved.
 *
 * Redistribution and use in source and binary forms, with or without
@@ -370,7 +370,9 @@ int mainGenericLaser(int argc, char **argv, std::string nodeName)
         {
           runState = scanner_finalize; // interrupt
         }
+        break;
       case scanner_finalize:
+        runState = scanner_init; // retry connection
         break; // ExitError or similiar -> interrupt while-Loop
       default:
         ROS_ERROR("Invalid run state in main loop");
